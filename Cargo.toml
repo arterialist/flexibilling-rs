@@ -1,7 +1,7 @@
 [package]
 name = "flexibilling"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 description = "Provider-agnostic usage metering and balance billing for Rust backends."
 license = "Apache-2.0"
 readme = "README.md"
@@ -9,8 +9,11 @@ repository = "https://github.com/arterialist/flexibilling-rs"
 keywords = ["billing", "metering", "quotas", "credits"]
 
 [dependencies]
-chrono = { version = "0.4", features = ["clock", "serde"] }
-rust_decimal = { version = "1.36", features = ["serde"] }
-serde = { version = "1", features = ["derive"] }
-serde_json = "1"
-thiserror = "2"
+chrono = { version = "0.4.45", features = ["clock", "serde"] }
+rust_decimal = { version = "1.42.1", features = ["serde"] }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"
+thiserror = "2.0.20"
+
+[dev-dependencies]
+rusqlite = { version = "0.40.2", features = ["bundled"] }

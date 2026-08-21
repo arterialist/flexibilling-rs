@@ -2,16 +2,21 @@
 
 ## Setup
 
-Install the stable Rust toolchain and run:
+Install the current stable Rust toolchain (the crate uses Rust edition 2024)
+and run:
 
 ```bash
 cargo fmt --check
-cargo test
+cargo test --all-targets
 ```
 
 The unit tests cover exact-decimal rating, waterfall fallback, distinct domain
 errors, ledger writes, payment idempotency, usage sessions, charge/refund, and
 period snapshots.
+
+`tests/sqlite_integration.rs` is the minimal real-backend conformance test. It
+uses `rusqlite` only as a dev dependency and exercises the exported repository
+and cache traits without coupling the crate to SQLite in production.
 
 ## Backend adapters
 

@@ -67,7 +67,11 @@ and services without changing the crate.
 
 ```bash
 cargo fmt --check
-cargo test
+cargo test --all-targets
 ```
+
+The SQLite integration test uses `rusqlite` with the bundled SQLite engine to
+exercise the public repository and cache traits against a persistent database,
+including workers, idempotency, refunds, and reopening the database.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for adapter and release guidance.

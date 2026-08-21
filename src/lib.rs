@@ -1071,7 +1071,7 @@ impl<R: BillingRepository, C: BillingCache> BillingService<R, C> {
                 ProductStrategy::Custom(name) => {
                     return Err(BillingError::Configuration(format!(
                         "unknown billing product strategy: {name}"
-                    )))
+                    )));
                 }
             };
             self.repo.create_transaction(BalanceTransactionCreate {
@@ -1537,12 +1537,16 @@ mod tests {
             service.cache.get_asset_amount("customer-1", "units"),
             Some(Decimal::from(70))
         );
-        assert!(service
-            .fund_customer("customer-1", &["plan-standard".into()], "payment-1")
-            .unwrap());
-        assert!(!service
-            .fund_customer("customer-1", &["plan-standard".into()], "payment-1")
-            .unwrap());
+        assert!(
+            service
+                .fund_customer("customer-1", &["plan-standard".into()], "payment-1")
+                .unwrap()
+        );
+        assert!(
+            !service
+                .fund_customer("customer-1", &["plan-standard".into()], "payment-1")
+                .unwrap()
+        );
         assert_eq!(
             service.repo.get_customer_balances("customer-1")[0].amount,
             Decimal::from(170)
