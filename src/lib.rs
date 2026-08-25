@@ -1,9 +1,9 @@
 //! Provider-agnostic usage metering and balance billing.
 //!
-//! The crate follows the language-neutral contract in the reference repository.
-//! Host applications implement [`BillingRepository`] and [`BillingCache`] for
-//! their own storage and transaction boundaries. The included in-memory
-//! adapters are intended for tests, examples, and small local programs.
+//! The crate keeps its billing behavior language-neutral. Host applications
+//! implement [`BillingRepository`] and [`BillingCache`] for their own storage
+//! and transaction boundaries. The included in-memory adapters are intended
+//! for tests, examples, and small local programs.
 
 use chrono::{DateTime, Utc};
 use rust_decimal::Decimal;
