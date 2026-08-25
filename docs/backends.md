@@ -33,8 +33,8 @@ impl BillingRepository for DatabaseRepository {
 }
 ```
 
-The traits are intentionally explicit. Rust will check that the complete port
-is implemented before the backend can be used with `BillingService`.
+Rust checks the complete port before the backend can be used with
+`BillingService`.
 
 ## In-memory adapters
 

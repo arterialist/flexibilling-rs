@@ -1,7 +1,7 @@
 # Framework integrations
 
-The crate has no required web framework. Bind billing to the host request layer
-explicitly.
+The crate does not include framework glue. Bind billing to the host request
+layer at the point where the customer is authenticated.
 
 ## Request boundary
 
@@ -39,7 +39,7 @@ domain-specific response.
 
 ## Request wrappers
 
-Rust attributes are not required. A function can call `require_balance`,
+Rust attributes are optional. A function can call `require_balance`,
 `BillingService::charge`, or `write_usage_session` directly. This keeps the
 integration compatible with Axum, Actix Web, Rocket, gRPC, and worker runtimes.
 

@@ -5,13 +5,13 @@
 [![Docs](https://img.shields.io/badge/docs-online-blue.svg)](https://arterialist.github.io/flexibilling-rs/)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-FlexiBilling is a provider-agnostic billing engine for Rust backends. It tracks
+FlexiBilling is a billing engine for Rust backends. It tracks
 named balances, rates usage, applies priority rules, writes ledger entries, and
 processes pending usage records.
 
-The crate does not require a database, web framework, cache, or payment
-provider. Implement `BillingRepository` and `BillingCache` for the host's
-storage and transaction boundaries, or use the included in-memory adapters.
+The crate leaves storage, web frameworks, caches, and payment providers to the
+host application. Implement `BillingRepository` and `BillingCache` for the
+host's storage and transaction boundaries, or use the included in-memory adapters.
 
 ## Install
 
@@ -83,14 +83,14 @@ let _record = write_usage_session(context, false, true, &mut usage_repository)?;
 under the same key when a caller has not already set it. Set
 `write_on_exception` to `false` to skip failed operations.
 
-## What is included
+## Included components
 
 - `BillingService` funds accounts, rates usage, charges, refunds, and updates cache views.
 - `BillingRepository`, `UsageRepository`, and `BillingCache` define backend ports.
 - `RatingEngine` and `WaterfallEngine` calculate costs and select fundable rules.
 - `UsageContext` and `write_usage_session` record operation-boundary usage.
-- `BillingWorker` processes pending records with retry-safe state transitions.
-- The in-memory adapters support tests and small local programs.
+- `BillingWorker` processes pending records and records each outcome.
+- The in-memory adapters are useful in tests and local programs.
 
 ## Documentation
 

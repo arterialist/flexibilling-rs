@@ -27,7 +27,7 @@ Amounts use `rust_decimal::Decimal`. The crate targets the Rust 2024 edition.
 - [Operations](operations.md) covers transactions, retries, cache behavior, and production checks.
 - [Development and releases](development.md) covers local checks, CI, docs, and crates.io publishing.
 
-## Design guarantees
+## Behavior
 
 1. Billing decisions do not depend on a storage provider.
 2. Asset and service names are application-defined strings.
